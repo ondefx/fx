@@ -1,174 +1,261 @@
-<!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>ondeFX</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="landing is-preload">
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ondeFX – Indicatori ed Expert Advisor su misura per MT4, MT5 e ATAS</title>
+<meta name="description" content="Programmazione di indicatori ed Expert Advisor personalizzati per MetaTrader 4, MetaTrader 5 e ATAS. Codice sorgente incluso, backtest e assistenza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1c2e;--bg2:#15263d;--line:#26405f;--ink:#eef2f7;--mute:#9db0c7;--accent:#f2b544;--up:#4cc9a0;--down:#ef6f6c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Bricolage Grotesque',Manrope,sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+header{position:sticky;top:0;z-index:10;background:rgba(15,28,46,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;text-decoration:none}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:26px;align-items:center;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:#1a1405;font-weight:700;padding:14px 26px;border-radius:6px;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn:hover{background:#ffc95c}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+nav .btn{padding:9px 18px;color:#1a1405}
+.hero{padding:72px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,64px);font-weight:800}
+.hero p{color:var(--mute);margin:22px 0 32px;max-width:520px;font-size:19px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.chart{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart small{display:block;color:var(--mute);font-size:13px;padding:8px 6px 0}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.badges span{border:1px solid var(--line);padding:6px 14px;border-radius:99px;font-size:14px;color:var(--mute)}
+h2{font-size:clamp(30px,4vw,44px);font-weight:800;max-width:700px}
+.lead{color:var(--mute);margin:16px 0 48px;max-width:620px}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.services article{border-top:3px solid var(--accent);padding-top:20px}
+.services h3{font-size:24px;margin-bottom:10px}
+.services p{color:var(--mute)}
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.grid6 div{background:var(--bg2);padding:28px}
+.grid6 h3{font-size:19px;margin-bottom:8px}
+.grid6 p{color:var(--mute);font-size:15.5px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s;list-style:none}
+.steps li{counter-increment:s;border-left:2px solid var(--line);padding-left:18px}
+.steps li::before{content:counter(s);font-family:'Bricolage Grotesque';font-size:34px;font-weight:800;color:var(--accent);display:block}
+.steps h3{font-size:19px;margin:4px 0 6px}
+.steps p{color:var(--mute);font-size:15.5px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+blockquote{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:26px}
+blockquote p{margin-bottom:18px}
+blockquote cite{font-style:normal;font-weight:700;display:block}
+blockquote cite span{display:block;color:var(--mute);font-weight:400;font-size:14px}
+.note{margin-top:20px;font-size:14px;color:var(--mute)}
+details{border-bottom:1px solid var(--line);padding:20px 0;max-width:820px}
+summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:'+';color:var(--accent);font-size:24px;line-height:1}
+details[open] summary::after{content:'–'}
+details p{color:var(--mute);margin-top:12px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+form{display:grid;gap:16px}
+label{font-size:14px;color:var(--mute);display:grid;gap:6px}
+input,select,textarea{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%}
+textarea{min-height:130px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:14px}
+footer p+p{margin-top:12px;max-width:820px}
+@media(max-width:860px){
+ .hero .wrap,.contact{grid-template-columns:1fr}
+ .services,.grid6,.quotes{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ nav a:not(.btn){display:none}
+ section{padding:64px 0}
+}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <a class="logo" href="#top">onde<span>FX</span></a>
+  <nav aria-label="Principale">
+   <a href="#servizi">Servizi</a><a href="#metodo">Come lavoro</a><a href="#testimonianze">Testimonianze</a><a href="#faq">FAQ</a>
+   <a class="btn" href="#contatti">Preventivo</a>
+  </nav>
+ </div>
+</header>
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+<main id="top">
+<section class="hero">
+ <div class="wrap">
+  <div>
+   <h1>La tua strategia di trading, trasformata in codice.</h1>
+   <p>Programmo indicatori ed Expert Advisor personalizzati per MetaTrader 4, MetaTrader 5 e ATAS. Tu descrivi le regole, io le scrivo, le collaudo e te le consegno con il codice sorgente.</p>
+   <div class="actions">
+    <a class="btn" href="#contatti">Richiedi un preventivo</a>
+    <a class="btn ghost" href="#servizi">Scopri i servizi</a>
+   </div>
+   <div class="badges"><span>MT4</span><span>MT5</span><span>ATAS</span></div>
+  </div>
+  <div class="chart" aria-hidden="true">
+   <svg id="cv" viewBox="0 0 520 340"></svg>
+   <small>Esempio grafico: candele con indicatore personalizzato e segnali di ingresso.</small>
+  </div>
+ </div>
+</section>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">ondeFX</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="generic.html">Generic</a></li>
-											<li><a href="elements.html">Elements</a></li>
-											<li><a href="#">Sign Up</a></li>
-											<li><a href="#">Log In</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
+<section id="servizi" class="alt">
+ <div class="wrap">
+  <h2>Tre modi in cui posso lavorare sul tuo trading</h2>
+  <p class="lead">Dalla singola idea a un sistema completo, con regole chiare e risultati verificabili sui dati storici.</p>
+  <div class="services">
+   <article>
+    <h3>Indicatori personalizzati</h3>
+    <p>Trasformo la tua analisi in un indicatore leggibile sul grafico: livelli, segnali, frecce, avvisi sonori e notifiche. Per MT4, MT5 e ATAS.</p>
+   </article>
+   <article>
+    <h3>Expert Advisor</h3>
+    <p>Sistemi automatici che applicano le tue regole di ingresso, uscita e gestione del rischio, senza emozioni e senza dover stare davanti allo schermo.</p>
+   </article>
+   <article>
+    <h3>Modifica e conversione</h3>
+    <p>Hai già un codice che non funziona o che vuoi portare da MT4 a MT5? Lo correggo, lo ottimizzo o lo converto mantenendo la logica originale.</p>
+   </article>
+  </div>
+ </div>
+</section>
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>ondeFX</h2>
-							<p>Programmazione FX<br />
-							indicatori expert<br />
-							crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>
-							<ul class="actions special">
-								<li><a href="#" class="button primary">Activate</a></li>
-							</ul>
-						</div>
-						<a href="#one" class="more scrolly">Learn More</a>
-					</section>
+<section>
+ <div class="wrap">
+  <h2>Cosa è incluso in ogni progetto</h2>
+  <p class="lead">Un lavoro professionale non finisce con la consegna del file.</p>
+  <div class="grid6">
+   <div><h3>Codice sorgente</h3><p>Ricevi i file modificabili, non solo l'eseguibile. Il codice è tuo.</p></div>
+   <div><h3>Backtest</h3><p>Verifico il comportamento sui dati storici e ti mostro i risultati.</p></div>
+   <div><h3>Gestione del rischio</h3><p>Stop loss, take profit, trailing, lotto fisso o in percentuale del capitale.</p></div>
+   <div><h3>Parametri configurabili</h3><p>Ogni regola è regolabile dalle impostazioni, senza toccare il codice.</p></div>
+   <div><h3>Codice documentato</h3><p>Commenti chiari e una breve guida d'uso per installare e configurare.</p></div>
+   <div><h3>Assistenza dopo la consegna</h3><p>Correzione di eventuali errori e piccole modifiche nel periodo concordato.</p></div>
+  </div>
+ </div>
+</section>
 
-				<!-- One -->
-					<section id="one" class="wrapper style1 special">
-						<div class="inner">
-							<header class="major">
-								<h2>Arcu aliquet vel lobortis ata nisl<br />
-								eget augue amet aliquet nisl cep donec</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-								fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-							</header>
-							<ul class="icons major">
-								<li><span class="icon fa-gem major style1"><span class="label">Lorem</span></span></li>
-								<li><span class="icon fa-heart major style2"><span class="label">Ipsum</span></span></li>
-								<li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span></li>
-							</ul>
-						</div>
-					</section>
+<section id="metodo" class="alt">
+ <div class="wrap">
+  <h2>Come lavoro, in quattro passi</h2>
+  <p class="lead">Tempi e costi sono definiti prima di iniziare.</p>
+  <ol class="steps">
+   <li><h3>Descrivi l'idea</h3><p>Mi racconti le regole della strategia, anche a voce o con degli screenshot.</p></li>
+   <li><h3>Ricevi il preventivo</h3><p>Ti indico prezzo e tempi di consegna, dopo aver chiarito ogni dettaglio.</p></li>
+   <li><h3>Sviluppo e test</h3><p>Programmo e collaudo su dati storici e in demo, tenendoti aggiornato.</p></li>
+   <li><h3>Consegna</h3><p>Ti passo file, sorgente e istruzioni, poi resto a disposizione per le rifiniture.</p></li>
+  </ol>
+ </div>
+</section>
 
-				<!-- Two -->
-					<section id="two" class="wrapper alt style2">
-						<section class="spotlight">
-							<div class="image"><img src="images/pic01.jpg" alt="" /></div><div class="content">
-								<h2>Magna primis lobortis<br />
-								sed ullamcorper</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image"><img src="images/pic02.jpg" alt="" /></div><div class="content">
-								<h2>Tortor dolore feugiat<br />
-								elementum magna</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image"><img src="images/pic03.jpg" alt="" /></div><div class="content">
-								<h2>Augue eleifend aliquet<br />
-								sed condimentum</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
-							</div>
-						</section>
-					</section>
+<section id="testimonianze">
+ <div class="wrap">
+  <h2>Cosa dicono i trader che hanno lavorato con me</h2>
+  <p class="lead">Le opinioni di chi ha già affidato un progetto.</p>
+  <div class="quotes">
+   <blockquote>
+    <p>“[Inserisci qui una testimonianza reale: cosa ha richiesto il cliente e cosa ha apprezzato.]”</p>
+    <cite>Nome Cognome<span>Trader, MT5</span></cite>
+   </blockquote>
+   <blockquote>
+    <p>“[Inserisci qui una testimonianza reale: tempi di consegna, qualità del codice, assistenza.]”</p>
+    <cite>Nome Cognome<span>Trader, MT4</span></cite>
+   </blockquote>
+   <blockquote>
+    <p>“[Inserisci qui una testimonianza reale: indicatore o sistema realizzato per ATAS.]”</p>
+    <cite>Nome Cognome<span>Trader, ATAS</span></cite>
+   </blockquote>
+  </div>
+  <p class="note">Sostituisci i tre riquadri con recensioni vere, con il permesso dei clienti, prima di pubblicare.</p>
+ </div>
+</section>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style3 special">
-						<div class="inner">
-							<header class="major">
-								<h2>Accumsan mus tortor nunc aliquet</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-								fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-							</header>
-							<ul class="features">
-								<li class="icon fa-paper-plane">
-									<h3>Arcu accumsan</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon solid fa-laptop">
-									<h3>Ac Augue Eget</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon solid fa-code">
-									<h3>Mus Scelerisque</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon solid fa-headphones-alt">
-									<h3>Mauris Imperdiet</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon fa-heart">
-									<h3>Aenean Primis</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-								<li class="icon fa-flag">
-									<h3>Tortor Ut</h3>
-									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-								</li>
-							</ul>
-						</div>
-					</section>
+<section id="faq" class="alt">
+ <div class="wrap">
+  <h2>Domande frequenti</h2>
+  <p class="lead">Le risposte alle richieste che ricevo più spesso.</p>
+  <details><summary>Quanto costa un indicatore o un Expert Advisor?</summary><p>Dipende dalla complessità delle regole. Dopo averle viste ti do un preventivo fisso, senza sorprese.</p></details>
+  <details><summary>In quanto tempo ricevo il lavoro?</summary><p>Un indicatore semplice richiede pochi giorni, un Expert Advisor completo di più. I tempi li concordiamo prima di iniziare.</p></details>
+  <details><summary>Il codice sorgente è mio?</summary><p>Sì, ricevi i file sorgente insieme al programma e puoi modificarli liberamente.</p></details>
+  <details><summary>Posso avere la stessa strategia su MT4 e MT5?</summary><p>Sì. Posso scrivere o convertire la stessa logica per entrambe le piattaforme, oppure per ATAS.</p></details>
+  <details><summary>Mi garantisci dei profitti?</summary><p>No. Io programmo le regole che mi fornisci e verifico che funzionino come descritto. I risultati dipendono dalla strategia e dai mercati.</p></details>
+ </div>
+</section>
 
-				<!-- CTA -->
-					<section id="cta" class="wrapper style4">
-						<div class="inner">
-							<header>
-								<h2>Arcue ut vel commodo</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
-							</header>
-							<ul class="actions stacked">
-								<li><a href="#" class="button fit primary">Activate</a></li>
-								<li><a href="#" class="button fit">Learn More</a></li>
-							</ul>
-						</div>
-					</section>
+<section id="contatti">
+ <div class="wrap contact">
+  <div>
+   <h2>Parliamo del tuo progetto</h2>
+   <p class="lead">Scrivimi la tua idea: ti rispondo con una prima valutazione e un preventivo.</p>
+   <p>Email: <a href="mailto:ondefx@gmail.com">ondefx@gmail.com</a></p>
+  </div>
+  <form id="f">
+   <label>Nome<input name="nome" required autocomplete="name"></label>
+   <label>Email<input type="email" name="email" required autocomplete="email"></label>
+   <label>Piattaforma
+    <select name="piattaforma"><option>MetaTrader 4</option><option>MetaTrader 5</option><option>ATAS</option><option>Altro</option></select>
+   </label>
+   <label>Cosa vuoi realizzare<textarea name="msg" required></textarea></label>
+   <button class="btn" type="submit">Invia la richiesta</button>
+  </form>
+ </div>
+</section>
+</main>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<ul class="copyright">
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
+<footer>
+ <div class="wrap">
+  <p>© <span id="y"></span> ondeFX. Tutti i diritti riservati.</p>
+  <p>Avvertenza sui rischi: il trading comporta un rischio elevato di perdita del capitale. Indicatori ed Expert Advisor sono strumenti tecnici e non costituiscono consulenza finanziaria né garanzia di risultati. Le prestazioni passate non sono indicative di quelle future.</p>
+ </div>
+</footer>
 
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){
+ var s=document.getElementById('cv'),n=26,x0=28,w=18,price=[],p=170,seed=7;
+ function r(){seed=(seed*9301+49297)%233280;return seed/233280}
+ var out='<g stroke="#26405f" stroke-width="1">';
+ for(var g=1;g<5;g++)out+='<line x1="0" x2="520" y1="'+(g*64)+'" y2="'+(g*64)+'"/>';
+ out+='</g>';
+ var ma=[],cs='';
+ for(var i=0;i<n;i++){
+  var o=p,c=o+(r()-.44)*38;p=c;
+  var h=Math.max(o,c)+r()*14,l=Math.min(o,c)-r()*14,x=x0+i*18.5;
+  var up=c>=o,col=up?'#4cc9a0':'#ef6f6c';
+  function y(v){return 320-(v-60)*1.05}
+  cs+='<line x1="'+x+'" x2="'+x+'" y1="'+y(h)+'" y2="'+y(l)+'" stroke="'+col+'"/>';
+  cs+='<rect x="'+(x-w/2+3)+'" width="'+(w-6)+'" y="'+Math.min(y(o),y(c))+'" height="'+Math.max(3,Math.abs(y(o)-y(c)))+'" fill="'+col+'"/>';
+  price.push(c);
+  var a=price.slice(-5),m=a.reduce(function(u,v){return u+v},0)/a.length;
+  ma.push(x+','+y(m));
+  if(i==9||i==18){cs+='<path d="M'+x+' '+(y(l)+20)+' l-7 12 h14z" fill="#f2b544"/>'}
+ }
+ out+=cs+'<polyline points="'+ma.join(' ')+'" fill="none" stroke="#f2b544" stroke-width="2.5" stroke-linejoin="round"/>';
+ s.innerHTML=out;
+})();
+document.getElementById('f').addEventListener('submit',function(e){
+ e.preventDefault();
+ var d=new FormData(this);
+ var body='Nome: '+d.get('nome')+'\nEmail: '+d.get('email')+'\nPiattaforma: '+d.get('piattaforma')+'\n\n'+d.get('msg');
+ location.href='mailto:ondefx@gmail.com?subject='+encodeURIComponent('Richiesta preventivo ondeFX')+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
 </html>
+
