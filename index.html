@@ -72,11 +72,16 @@ form{display:grid;gap:16px}
 label{font-size:14px;color:var(--mute);display:grid;gap:6px}
 input,select,textarea{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%}
 textarea{min-height:130px;resize:vertical}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.gallery figure{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px}
+.gallery img{width:100%;height:auto;display:block;border-radius:6px;background:#fff}
+.gallery figcaption{padding:14px 4px 0;color:var(--mute);font-size:15.5px}
+.gallery figcaption strong{display:block;color:var(--ink);font-size:18px;margin-bottom:4px}
 footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:14px}
 footer p+p{margin-top:12px;max-width:820px}
 @media(max-width:860px){
  .hero .wrap,.contact{grid-template-columns:1fr}
- .services,.grid6,.quotes{grid-template-columns:1fr}
+ .services,.grid6,.quotes,.gallery{grid-template-columns:1fr}
  .steps{grid-template-columns:1fr 1fr}
  nav a:not(.btn){display:none}
  section{padding:64px 0}
@@ -90,7 +95,7 @@ footer p+p{margin-top:12px;max-width:820px}
  <div class="wrap">
   <a class="logo" href="#top">onde<span>FX</span></a>
   <nav aria-label="Principale">
-   <a href="#servizi">Servizi</a><a href="#metodo">Come lavoro</a><a href="#testimonianze">Testimonianze</a><a href="#faq">FAQ</a>
+   <a href="#servizi">Servizi</a><a href="#esempi">Esempi</a><a href="#metodo">Come lavoro</a><a href="#testimonianze">Testimonianze</a><a href="#faq">FAQ</a>
    <a class="btn" href="#contatti">Preventivo</a>
   </nav>
  </div>
@@ -129,6 +134,23 @@ footer p+p{margin-top:12px;max-width:820px}
     <h3>Modifica e conversione</h3>
     <p>Hai già un codice che non funziona o che vuoi portare da MT4 a MT5? Lo correggo, lo ottimizzo o lo converto mantenendo la logica originale.</p>
    </article>
+  </div>
+ </div>
+</section>
+
+<section id="esempi">
+ <div class="wrap">
+  <h2>Esempi di lavori realizzati su MetaTrader 5</h2>
+  <p class="lead">Schermate reali di strumenti sviluppati su richiesta. Clicca sull'immagine per ingrandirla.</p>
+  <div class="gallery">
+   <figure>
+    <a href="images/MT5-01.png" target="_blank" rel="noopener"><img src="images/MT5-01.png" alt="Grafico MT5 con profilo di volume, livelli di sessione, deviazione standard e %B" loading="lazy"></a>
+    <figcaption><strong>Indicatori di analisi</strong>Profilo di volume, livelli di sessione, bande di volatilità, deviazione standard e %B sullo stesso grafico.</figcaption>
+   </figure>
+   <figure>
+    <a href="images/MT5-02-ARBITRAGE.png" target="_blank" rel="noopener"><img src="images/MT5-02-ARBITRAGE.png" alt="Expert Advisor di arbitraggio su MT5 con pannello di controllo e pulsanti di acquisto e vendita" loading="lazy"></a>
+    <figcaption><strong>Expert Advisor di arbitraggio</strong>Monitoraggio in tempo reale di tre gruppi di valute, con pannello di controllo e pulsanti per aprire e chiudere le operazioni.</figcaption>
+   </figure>
   </div>
  </div>
 </section>
