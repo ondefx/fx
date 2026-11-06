@@ -86,6 +86,13 @@ textarea{min-height:130px;resize:vertical}
 .wa:hover{background:#4be082}
 .wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.4);border-radius:99px;padding:12px 20px}
 .contact .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.partner-card{max-width:420px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.partner-head{background:#1b3150;padding:18px 24px;border-bottom:1px solid var(--line)}
+.partner-head span{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.partner-body{padding:24px}
+.partner-body h3{font-size:26px;margin-bottom:6px}
+.partner-body p{color:var(--mute);margin-bottom:20px}
+.disclosure{max-width:720px}
 footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:14px}
 footer p+p{margin-top:12px;max-width:820px}
 @media(max-width:860px){
@@ -105,7 +112,7 @@ footer p+p{margin-top:12px;max-width:820px}
  <div class="wrap">
   <a class="logo" href="#top">onde<span>FX</span></a>
   <nav aria-label="Principale">
-   <a href="#chisono">Chi sono</a><a href="#servizi">Servizi</a><a href="#esempi">Esempi</a><a href="#metodo">Come lavoro</a><a href="#testimonianze">Testimonianze</a><a href="#faq">FAQ</a>
+   <a href="#chisono">Chi sono</a><a href="#servizi">Servizi</a><a href="#esempi">Esempi</a><a href="#metodo">Come lavoro</a><a href="#partner">Partner</a><a href="#faq">FAQ</a>
    <a class="btn" href="#contatti">Preventivo</a>
   </nav>
  </div>
@@ -205,25 +212,19 @@ footer p+p{margin-top:12px;max-width:820px}
  </div>
 </section>
 
-<section id="testimonianze">
+<section id="partner">
  <div class="wrap">
-  <h2>Cosa dicono i trader che hanno lavorato con me</h2>
-  <p class="lead">Le opinioni di chi ha già affidato un progetto.</p>
-  <div class="quotes">
-   <blockquote>
-    <p>“[Inserisci qui una testimonianza reale: cosa ha richiesto il cliente e cosa ha apprezzato.]”</p>
-    <cite>Nome Cognome<span>Trader, MT5</span></cite>
-   </blockquote>
-   <blockquote>
-    <p>“[Inserisci qui una testimonianza reale: tempi di consegna, qualità del codice, assistenza.]”</p>
-    <cite>Nome Cognome<span>Trader, MT4</span></cite>
-   </blockquote>
-   <blockquote>
-    <p>“[Inserisci qui una testimonianza reale: indicatore o sistema realizzato per ATAS.]”</p>
-    <cite>Nome Cognome<span>Trader, ATAS</span></cite>
-   </blockquote>
+  <h2>Piattaforma partner</h2>
+  <p class="lead">Per chi cerca un broker compatibile con gli strumenti che sviluppo.</p>
+  <div class="partner-card">
+   <div class="partner-head"><span>PARTNER</span></div>
+   <div class="partner-body">
+    <h3>RInfinity</h3>
+    <p>Piattaforma di trading compatibile con MT4 e MT5.</p>
+    <a class="btn" href="https://rinfinity.com/en/welcome-bonus?a=ygrh" target="_blank" rel="sponsored noopener">Visita il sito del partner</a>
+   </div>
   </div>
-  <p class="note">Sostituisci i tre riquadri con recensioni vere, con il permesso dei clienti, prima di pubblicare.</p>
+  <p class="note disclosure"><strong>Partner.</strong> Piattaforma di trading compatibile con MT4 e MT5. <strong>Link di affiliazione:</strong> se apri un conto da questo link, io ricevo una commissione. I CFD sono strumenti complessi e comportano un elevato rischio di perdere rapidamente denaro a causa della leva. [XX]% dei conti di investitori al dettaglio perde denaro negli scambi di CFD con questo fornitore. Questo non è un consiglio finanziario.</p>
  </div>
 </section>
 
